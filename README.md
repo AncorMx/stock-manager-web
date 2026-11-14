@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stock Manager Web
 
-## Getting Started
+Sistema moderno de gestión de inventario, catálogo y finanzas con método contable FIFO, diseñado en modo oscuro **Zinc** con **Next.js (App Router)**, **Tailwind CSS** y **Supabase**.
 
-First, run the development server:
+## Características Principales
 
+- **Gestión de Inventario (CRUD Total)**:
+  - Catálogo de productos con fotografía en alta resolución o silueta estilizada con iniciales.
+  - Modales táctiles para registro rápido de stock (+ Entrada y − Venta).
+  - Modal amplio de detalles de producto con carga directa de imágenes a Supabase Storage (`product-images`).
+  - Edición en tiempo real de nombres y marcas, y eliminación segura con doble confirmación.
+- **Multisede y Ubicaciones**:
+  - Selector de ubicaciones y botón modal de creación rápida para nuevas sucursales o bodegas.
+- **Métricas y Finanzas con Algoritmo FIFO**:
+  - Cálculo de ganancias netas descontando de los lotes de compra más antiguos (Primeras Entradas, Primeras Salidas).
+  - Indicadores clave (KPIs): Ventas Totales, Ganancia Neta Real y Margen de Rentabilidad (%).
+  - Historial detallado de ventas con desglose de ingreso, costo FIFO y ganancia individual.
+- **Autenticación y Seguridad**:
+  - Rutas protegidas mediante Middleware de Next.js y `@supabase/ssr`.
+  - Pantalla de login y registro de administrador.
+
+## Tecnologías Utilizadas
+
+- **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
+- **Estilos**: [Tailwind CSS](https://tailwindcss.com/) (Dark Mode Zinc)
+- **Base de Datos & Auth & Storage**: [Supabase](https://supabase.com/)
+- **Lenguaje**: TypeScript
+
+## Configuración y Despliegue
+
+1. Clona el repositorio:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/AncorMx/stock-manager-web.git
+cd stock-manager-web
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configura las variables de entorno en un archivo `.env.local` basado en `.env.example`:
+```env
+NEXT_PUBLIC_SUPABASE_URL=tu-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu-supabase-anon-key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Inicia el servidor de desarrollo:
+```bash
+npm run dev
+```
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
